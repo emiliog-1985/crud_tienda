@@ -44,3 +44,17 @@ class ProductoDAO:
             print('Producto actualizado')
         else:
             print('Producto no se logro actualizar')
+
+    # Metodo para buscar producto por codigo
+    def buscar_producto(self):
+        sql = 'SELECT codigo, nombre, precio, stock FROM producto WHERE codigo=%s'
+        datos = (self.__producto.codigo,)
+        producto = self.__conexion.buscar(sql, datos)
+        if producto:
+            print(f'Codigo: {producto["codigo"]}')
+            print(f'Nombre: {producto["nombre"]}')
+            print(f'Precio: {producto["precio"]}')
+            print(f'Stock: {producto["stock"]}')
+            print('❯❯❯'*50)
+        else:
+            print('Producto no encontrado')

@@ -31,3 +31,8 @@ class Conexion:
         cursor.execute(sql)
         return cursor.fetchall()
     
+    def buscar(self, sql:str, datos):
+        cursor = self.__conn.cursor(dictionary=True)
+        cursor.execute(sql, datos)
+        return cursor.fetchone()
+    

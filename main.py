@@ -39,11 +39,12 @@ def menu_principal():
         os.system('clear') # os.system('clear')
         print(f'{colorama.Fore.BLUE} 💻 Tienda_CRUD')
         inicio_tienda() # animacion de bienvenida
-        print(f'{colorama.Fore.GREEN} 1.Crear producto C')
-        print(f'{colorama.Fore.YELLOW} 2.Listar productos R')
-        print(f'{colorama.Fore.CYAN} 3.Actualizar producto U')
-        print(f'{colorama.Fore.RED} 4.Eliminar producto D')
-        print(f'{colorama.Fore.MAGENTA} 0.Salir')
+        print(f'{colorama.Fore.GREEN} 1.Crear producto C 🆕')
+        print(f'{colorama.Fore.YELLOW} 2.Listar productos R 📃')
+        print(f'{colorama.Fore.CYAN} 3.Actualizar producto U 🔄')
+        print(f'{colorama.Fore.RED} 4.Eliminar producto D 🗑️')
+        print(f'{colorama.Fore.MAGENTA} 5.Buscar producto 🔍')
+        print(f'{colorama.Fore.MAGENTA} 0.Salir ➜]')
 
         opcion = input(f'{colorama.Fore.GREEN}✅ Ingrese su opcion: ')
         os.system('clear')
@@ -59,7 +60,10 @@ def menu_principal():
             
         elif opcion == '4':
             eliminar_producto()
-        
+
+        elif opcion == '5':
+            buscar_producto()
+            
         elif opcion == '0':
             Salida_tienda()
             break
@@ -73,9 +77,23 @@ def menu_principal():
 def agrega_producto():
     print('Crear producto 🔨')
     codigo = input('Ingrese codigo de producto: ')
+    while True:
+        if codigo.strip() == '':
+            print('El codigo no puede estar vacio. Intente de nuevo.')
+            codigo = input('Ingrese codigo de producto: ')
+        else:
+            break
     nombre = input('Ingrese nombre de producto: ')
+    while True:
+        if nombre.strip() == '':
+            print('El nombre no puede estar vacio. Intente de nuevo.')
+            nombre = input('Ingrese nombre de producto: ')
+        else:
+            break
     precio = float(input('Ingrese precio de producto: '))
+
     stock = int(input('Ingrese stock de producto: '))
+
     # instancie un objeto de tipo producto
     producto = Producto(codigo=codigo, nombre=nombre, precio=precio, stock=stock)
     dao = ProductoDAO(producto)
@@ -119,5 +137,12 @@ def eliminar_producto():
         print('Producto eliminado')
     else:
         print('Producto no se logro eliminar o producto no existe')
+
+def buscar_producto():
+    print('Buscar producto 🔍 por codigo')
+    codigo = input('Ingrese codigo de producto a buscar: ')
+    producto = Producto(codigo=codigo, nombre='', precio=0.0, stock=0)
+    dao = ProductoDAO(producto)
+    dao.buscar_producto()
 
 menu_principal()
