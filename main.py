@@ -4,6 +4,8 @@ import colorada # permite colorear líneas en el terminal
 import time
 import sys
 
+# Animación de inicio de aplicación
+
 symbols = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
 
 def inicio_tienda(duration=2):
