@@ -1,6 +1,6 @@
 # Archivo que sirve como vista
-import os
-import colorama
+import os 
+import colorada # permite colorear líneas en el terminal
 import time
 import sys
 
