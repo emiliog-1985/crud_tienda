@@ -4,7 +4,7 @@ import colorada # permite colorear líneas en el terminal
 import time
 import sys
 
-# Animación de inicio de aplicación
+# Animación de inicio de aplicación iniciar
 
 symbols = ['⣾', '⣷', '⣯', '⣟', '⡿', '⢿', '⣻', '⣽']
 
@@ -19,6 +19,8 @@ def inicio_tienda(duration=2):
     sys.stdout.write('\r' + ' ' * (len(symbols[0]) + len(' ✨️ Bienvenido a la tienda ✨️')) + '\r') # Clear the line
     sys.stdout.flush()
     print(f'{colorama.Fore.BLUE} Menu principal ⚙️')
+
+# Animación de salida de la aplicación 
 
 def Salida_tienda(duration=2):
     start_time = time.time()
